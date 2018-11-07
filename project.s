@@ -7,6 +7,8 @@ main:
 	la $a0, str	
 	li $a0, 16
 	syscall
+	
+	li $v0, 4
 
 	li $v0, 10
 	syscall
