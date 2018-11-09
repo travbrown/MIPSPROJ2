@@ -5,12 +5,11 @@ str:
 main:
 	li $v0, 8
 	la $a0, str	
-	li $a0, 16
+	li $a1, 16
 	syscall
 	
-	li $v0, 4
-	la $a0, str
-	syscall
+	loop:
+		bgt $t0, 3, exit
 
 	li $v0, 10
 	syscall
