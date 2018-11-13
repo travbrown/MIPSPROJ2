@@ -15,5 +15,7 @@ main:
 	loop:
 		bgt $t0, 3, exit
 
+		j loop
+
 	li $v0, 10
 	syscall
