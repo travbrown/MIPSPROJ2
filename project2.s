@@ -7,11 +7,13 @@
 main:
 	li $v0, 8
 	la $a0, user_input
-	li $a1, 16
+	li $a1, 1000
 	syscall
 	
 	li $t0, 0 #initialize count to zero	
-
+	
+	loop:
+		bgt $t0, 3, exit
 
 	li $v0, 10
 	syscall
