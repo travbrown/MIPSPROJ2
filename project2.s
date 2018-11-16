@@ -10,12 +10,11 @@ main:
 	li $a1, 1000
 	syscall
 	
-	li $t0, 0 #initialize count to zero	
-	
-	loop:
-		bgt $t0, 3, exit
-
-		j loop
+exit:	
+	la $a0,
+	li $v0, 4
+	syscall
 
 	li $v0, 10
 	syscall
+
