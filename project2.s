@@ -30,4 +30,9 @@ exit:
 #Error Branches
 
 too_long_error:
+	la $a0, longInput
+        li $v0, 4
+        syscall
 
+        li $v0, 10
+        syscall
