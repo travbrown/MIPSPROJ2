@@ -80,6 +80,11 @@ find_highest_power:
         sub $s4, $s4, 1
         j find_highest_power
 
+multiply:
+        mult $t7, $t4
+        mflo $t5                        # sub_sum
+        add $t6, $t6, $t5               # final sum
+
 
 exit:
 	move $a0, $t6                   # moves sum to a0
