@@ -46,7 +46,9 @@ char_processing:
         bne $t7, 32, incorrect_base_error
         j char_space_processing         # loops until it branches to one of the above mentioned labels
 
-
+return_to_start:
+        sub $t1, $t1, $t3               # restart the pointer in character array
+        la $t3, 0                       # restart the counter
 
 exit:
 	move $a0, $t6                   # moves sum to a0
