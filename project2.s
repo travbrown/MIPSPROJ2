@@ -42,6 +42,9 @@ char_processing:
         beq $t7, 10, return_to_start    # If string is finished branch to return to start
         beq $t7, 0, return_to_start
         bne $t7, 32, char_processing    # If it is NOT a space is found, then it  loops	
+	beq $t7, 0, return_to_start
+        bne $t7, 32, incorrect_base_error
+        j char_space_processing         # loops until it branches to one of the above mentioned labels
 
 
 
