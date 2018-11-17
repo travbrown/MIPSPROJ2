@@ -61,6 +61,11 @@ find_length:                            # determine if the length of the string 
         lb $t7, ($t1)
         addi $t1, $t1, 1
         addi $t3, $t3, 1
+	beq $t7, 10, reset_ptr
+        beq $t7, 0, reset_ptr
+        beq $t7, 32, reset_ptr
+        beq $t3, 5, too_long_error
+        j find_length	
 
 exit:
 	move $a0, $t6                   # moves sum to a0
