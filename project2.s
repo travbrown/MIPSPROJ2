@@ -37,7 +37,14 @@ space_processing:
 
 char_processing:
         lb $t7,0($t1)
-	
+	addi $t1, $t1, 1
+        addi $t3, $t3, 1
+        beq $t7, 10, return_to_start    # If string is finished branch to return to start
+        beq $t7, 0, return_to_start
+        bne $t7, 32, char_processing    # If it is NOT a space is found, then it  loops	
+
+
+
 exit:
 	move $a0, $t6                   # moves sum to a0
         li $v0, 1                       # prints contents of a0
