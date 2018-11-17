@@ -65,7 +65,13 @@ find_length:                            # determine if the length of the string 
         beq $t7, 0, reset_ptr
         beq $t7, 32, reset_ptr
         beq $t3, 5, too_long_error
-        j find_length	
+        j find_length
+
+reset_ptr:                              # resetting the  pointer to the start of the string
+        sub $t1, $t1, $t3
+        sub $t3, $t3, $t4
+        lb $t7, ($t1)
+        sub $s4, $t3, $t4	
 
 exit:
 	move $a0, $t6                   # moves sum to a0
