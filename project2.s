@@ -128,3 +128,5 @@ too_long_error:
 
         li $v0, 10
         syscall
+
+incorrect_base_error:
