@@ -73,6 +73,9 @@ reset_ptr:                              # resetting the  pointer to the start of
         lb $t7, ($t1)
         sub $s4, $t3, $t4	
 
+find_highest_power:
+
+
 exit:
 	move $a0, $t6                   # moves sum to a0
         li $v0, 1                       # prints contents of a0
