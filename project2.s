@@ -85,6 +85,12 @@ multiply:
         mflo $t5                        # sub_sum
         add $t6, $t6, $t5               # final sum
 
+	beq $t4, 1, exit
+        div $t4, $s2                    # dividing t4 to the next power of base
+        mflo $t4
+        add $t1, $t1, 1
+        lb $t7, 0($t1)
+
 
 exit:
 	move $a0, $t6                   # moves sum to a0
