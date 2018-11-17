@@ -28,7 +28,16 @@ main:
 
 space_processing:
 	lb $t7,0($t1)
-		
+	addi $t1, $t1, 1
+        addi $t3, $t3, 1
+        beq $t7, 32, space_processing   # loop and move forward if space detected
+        beq $t7, 10, empty_error        # branches to Empty_error label if new line found
+        beq $t7, $0, empty_error
+                                        # if a character is next, it will move on to next label automatically
+
+char_processing:
+        lb $t7,0($t1)
+	
 exit:
 	move $a0, $t6                   # moves sum to a0
         li $v0, 1                       # prints contents of a0
