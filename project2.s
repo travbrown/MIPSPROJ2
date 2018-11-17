@@ -15,21 +15,27 @@ main:
 	add $t7, $0, 0 			# Initializing registers
 	add $t3, $0, 0 
 
-	la $t4, user_input
-	lb $t3, 0($t4)
+	                                # empty input check
+        la $t1, user_input              # set pointer
+        lb $t7, 0($t1)                  # load first element of string into register
+        beq $t7, 10, empty_error        # Check for new line
+        beq $t7, 0, empty_error
 	
-# Checking for empty input
-	beq $t3, 10, empty_error
-	beq $t3, 0, empty_error
-	
+	addi $s2, $0, 31                # Set Base number
+        addi $t5, $0, 0
+        addi $t4, $0, 1
+        addi $t6, $0, 0
+
+space_processing:
+	lb $t7,0($t1)
 		
 exit:
-		la $a0, 
-		li $v0, 1
-		syscall
+	move $a0, $t6                   # moves sum to a0
+        li $v0, 1                       # prints contents of a0
+        syscall
+        li $v0,10                       # Successfully ends program
+        syscall
 
-		li $v0, 10
-		syscall
 # Error Branches
 
 too_long_error:
