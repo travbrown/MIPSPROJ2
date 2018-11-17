@@ -34,17 +34,22 @@ space_processing:
         beq $t7, 10, empty_error        # branches to Empty_error label if new line found
         beq $t7, $0, empty_error
                                         # if a character is next, it will move on to next label automatically
-
 char_processing:
-        lb $t7,0($t1)
-	addi $t1, $t1, 1
+         lb $t7,0($t1)
+        addi $t1, $t1, 1
         addi $t3, $t3, 1
         beq $t7, 10, return_to_start    # If string is finished branch to return to start
         beq $t7, 0, return_to_start
-        bne $t7, 32, char_processing    # If it is NOT a space is found, then it  loops	
-	beq $t7, 0, return_to_start
-        bne $t7, 32, incorrect_base_error
-        j char_space_processing         # loops until it branches to one of the above mentioned labels
+        bne $t7, 32, char_processing    # If it is NOT a space is found, then it  loops
+
+char_space_processing:
+        lb $t7,0($t1)
+        addi $t1, $t1, 1
+         addi $t3, $t3, 1
+         beq $t7, 10, return_to_start    # If string is finished branch to return to start
+         beq $t7, 0, return_to_start
+         bne $t7, 32, incorrect_base_error
+         j char_space_processing         # loops until it branches to one of the above mentionedlabels
 
 return_to_start:
         sub $t1, $t1, $t3               # restart the pointer in character array
@@ -122,7 +127,7 @@ Number:
 # Error Branches
 
 too_long_error:
-	la $a0, longInput
+	la $a0, input_too_long
         li $v0, 4
         syscall
 
@@ -144,5 +149,4 @@ empty_error:
 
 	li $v0,10               # ends program
         syscall
-
         jr $ra
