@@ -130,3 +130,9 @@ too_long_error:
         syscall
 
 incorrect_base_error:
+	la $a0, wrong_base      # loads string
+        li $v0, 4               # Specifies print string system call
+        syscall
+
+        li $v0,10               # ends program
+        syscall
