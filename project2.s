@@ -90,7 +90,7 @@ multiply:
         mflo $t4
         add $t1, $t1, 1
         lb $t7, 0($t1)
-
+	j conversion
 
 exit:
 	move $a0, $t6                   # moves sum to a0
@@ -98,6 +98,11 @@ exit:
         syscall
         li $v0,10                       # Successfully ends program
         syscall
+
+conversion:
+        blt $t7, 48, incorrect_base_error       # checks if character is before 0 in ASCII chart
+        blt $t7, 58, Number                     # checks if character is between 48 and 57
+        blt $t7, 65, incorrect_base_error       # checks if character is between 58 and 64
 
 # Error Branches
 
