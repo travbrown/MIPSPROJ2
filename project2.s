@@ -114,7 +114,10 @@ Upper_Case:
 
 Lower_Case:
         addi $t7, $t7, -87
-        #j multiply
+        j multiply
+Number:
+        addi $t7, $t7, -48
+        j multiply
 
 # Error Branches
 
