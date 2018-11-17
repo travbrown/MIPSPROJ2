@@ -136,3 +136,8 @@ incorrect_base_error:
 
         li $v0,10               # ends program
         syscall
+
+empty_error:
+        la $a0, input_empty     # loads string
+        li $v0, 4               # Specifies print string system call
+        syscall
