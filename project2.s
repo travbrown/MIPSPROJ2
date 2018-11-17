@@ -55,7 +55,12 @@ move_forward:
         addi $t1, $t1, 1
         beq $t7, 32, move_forward
 
+addi $t1, $t1, -1
 
+find_length:                            # determine if the length of the string is valid
+        lb $t7, ($t1)
+        addi $t1, $t1, 1
+        addi $t3, $t3, 1
 
 exit:
 	move $a0, $t6                   # moves sum to a0
