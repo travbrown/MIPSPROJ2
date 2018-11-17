@@ -74,6 +74,11 @@ reset_ptr:                              # resetting the  pointer to the start of
         sub $s4, $t3, $t4	
 
 find_highest_power:
+	beq $s4, 0, conversion          # Determing the highest power
+        mult $t4, $s2
+        mflo $t4
+        sub $s4, $s4, 1
+        j find_highest_power
 
 
 exit:
