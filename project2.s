@@ -50,6 +50,13 @@ return_to_start:
         sub $t1, $t1, $t3               # restart the pointer in character array
         la $t3, 0                       # restart the counter
 
+move_forward:
+        lb $t7, 0($t1)
+        addi $t1, $t1, 1
+        beq $t7, 32, move_forward
+
+
+
 exit:
 	move $a0, $t6                   # moves sum to a0
         li $v0, 1                       # prints contents of a0
