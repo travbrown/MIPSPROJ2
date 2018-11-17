@@ -103,6 +103,18 @@ conversion:
         blt $t7, 48, incorrect_base_error       # checks if character is before 0 in ASCII chart
         blt $t7, 58, Number                     # checks if character is between 48 and 57
         blt $t7, 65, incorrect_base_error       # checks if character is between 58 and 64
+	blt $t7, 86, Upper_Case                 # checks if character is between 65 and 85
+        blt $t7, 97, incorrect_base_error       # checks if character is between 76 and 96
+        blt $t7, 118, Lower_Case                # checks if character is between 97 and 117
+        blt $t7, 128, incorrect_base_error      # checks if character is between 118 and 127
+
+Upper_Case:
+        addi $t7, $t7, -55
+        j multiply
+
+Lower_Case:
+        addi $t7, $t7, -87
+        #j multiply
 
 # Error Branches
 
